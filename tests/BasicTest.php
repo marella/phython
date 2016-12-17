@@ -2,8 +2,6 @@
 
 namespace Phython\Tests;
 
-use Phython\Python;
-
 class BasicTest extends BaseTestCase
 {
     public function testNullOutput()
@@ -79,10 +77,5 @@ class BasicTest extends BaseTestCase
         }
 
         return $ret;
-    }
-
-    protected function getPython()
-    {
-        return new Python(__DIR__.'/modules');
     }
 }

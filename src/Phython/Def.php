@@ -12,6 +12,11 @@ class Def
     /**
      * @var string
      */
+    protected $python;
+
+    /**
+     * @var string
+     */
     protected $module;
 
     /**
@@ -19,9 +24,10 @@ class Def
      */
     protected $def;
 
-    public function __construct($path, $module, $def)
+    public function __construct($path, $module, $def, $python = null)
     {
         $this->path = $path;
+        $this->python = $python;
         $this->module = $module;
         $this->def = $def;
     }
@@ -46,7 +52,7 @@ class Def
 
     public function getProcess()
     {
-        return new Process($this->path, $this->module, $this->def);
+        return new Process($this->path, $this->module, $this->def, $this->python);
     }
 
     public function __invoke()

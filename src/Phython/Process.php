@@ -14,11 +14,12 @@ class Process
      */
     protected $process;
 
-    public function __construct($path, $module, $function)
+    public function __construct($path, $module, $function, $python = null)
     {
+        $python = $python ?: 'python';
         $path = rtrim($path, DIRECTORY_SEPARATOR);
         $main = realpath(__DIR__.'/../modules/phython.py');
-        $builder = new ProcessBuilder(['python', $main, $module, $function]);
+        $builder = new ProcessBuilder([$python, $main, $module, $function]);
         $builder->setEnv('PYTHONPATH', $path);
         $this->process = $builder->getProcess();
     }

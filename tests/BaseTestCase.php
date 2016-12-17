@@ -7,8 +7,8 @@ use Phython\Python;
 
 abstract class BaseTestCase extends PHPUnit_Framework_TestCase
 {
-    protected function getPython()
+    protected function getPython($python = null)
     {
-        return new Python(__DIR__.'/modules');
+        return new Python(__DIR__.'/modules', $python);
     }
 }
