@@ -4,7 +4,10 @@ sudo: false
 
 os:
   - linux
-  - osx
+
+dist:
+  - precise
+  - trusty
 
 php:
   - 5.5
@@ -13,23 +16,30 @@ php:
   - 7.1
   - hhvm
 
-python:
-  - 2.6
-  - 2.7
-  - 3.2
-  - 3.3
-  - 3.4
-  - 3.5
-
 env:
-  - setup=basic
-  - setup=stable
-  - setup=lowest
+  - test_python=2.6 setup=basic
+  - test_python=2.6 setup=stable
+  - test_python=2.6 setup=lowest
+  - test_python=2.7 setup=basic
+  - test_python=2.7 setup=stable
+  - test_python=2.7 setup=lowest
+  - test_python=3.2 setup=basic
+  - test_python=3.2 setup=stable
+  - test_python=3.2 setup=lowest
+  - test_python=3.3 setup=basic
+  - test_python=3.3 setup=stable
+  - test_python=3.3 setup=lowest
+  - test_python=3.4 setup=basic
+  - test_python=3.4 setup=stable
+  - test_python=3.4 setup=lowest
+  - test_python=3.5 setup=basic
+  - test_python=3.5 setup=stable
+  - test_python=3.5 setup=lowest
+  - test_python=pypy setup=basic
+  - test_python=pypy setup=stable
+  - test_python=pypy setup=lowest
 
-matrix:
-  include:
-    - os: linux
-      dist: trusty
+before_install: pyenv install $test_python
 
 install:
   - if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction; fi
