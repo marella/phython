@@ -42,6 +42,7 @@ before_install:
   - eval "$(pyenv virtualenv-init -)"
   - pyenv install --list
   - pyenv install $test_python
+  - pyenv global $test_python
   - python --version
 
 install:
