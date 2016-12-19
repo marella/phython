@@ -32,11 +32,9 @@ env:
   - test_python=pypy setup=stable
   - test_python=pypy setup=lowest
 
-matrix:
-  include:
-    - dist: trusty
-
-before_install: pyenv install $test_python
+before_install:
+  - curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+  - pyenv install $test_python
 
 install:
   - if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction; fi
