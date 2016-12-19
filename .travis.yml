@@ -2,13 +2,6 @@ language: php
 
 sudo: false
 
-os:
-  - linux
-
-dist:
-  - precise
-  - trusty
-
 php:
   - 5.5
   - 5.6
@@ -38,6 +31,10 @@ env:
   - test_python=pypy setup=basic
   - test_python=pypy setup=stable
   - test_python=pypy setup=lowest
+
+matrix:
+  include:
+    - dist: trusty
 
 before_install: pyenv install $test_python
 
