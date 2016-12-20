@@ -17,7 +17,12 @@ def run():
     call(module[function])
 
 def call(function):
-    arguments = raw_input().strip()
+    # raw_input() is removed in python 3
+    try:
+        input = raw_input
+    except NameError:
+        pass
+    arguments = input().strip()
     arguments = json.loads(arguments)
     output = function(*arguments)
     print(json.dumps(output))
