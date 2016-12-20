@@ -55,7 +55,6 @@ class BasicTest extends BaseTestCase
     {
         $modules = [
             'submodules.helpers.array',
-            'submodules.helpers.implicit',
             'submodules.helpers.absolute',
             'submodules.helpers.relative',
             'submodules.helpers.inner.absolute',
